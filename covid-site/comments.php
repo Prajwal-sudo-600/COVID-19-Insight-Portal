@@ -77,7 +77,7 @@ $comments = $stmt->fetchAll();
     </main>
 
     <footer>
-        <p>&copy; 2023 COVID-19 Information Website</p>
+        <p>&copy; 2026 COVID-19 Information Website</p>
     </footer>
 </body>
 </html>
