@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Information Website</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="data.php">Data</a>
+            <a href="about.html">About</a>
+            <a href="comments.php">Comments</a>
+            <a href="register.php">Register</a>
+            <a href="login.php">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to COVID-19 Information Portal</h1>
+        <p>Get the latest updates, register for vaccination, and read about prevention.</p>
+
+        <div class="stats">
+            <div class="stat-box">
+                <h2>Total Cases</h2>
+                <p id="totalCases">Loading...</p>
+            </div>
+            <div class="stat-box">
+                <h2>Total Deaths</h2>
+                <p id="totalDeaths">Loading...</p>
+            </div>
+            <div class="stat-box">
+                <h2>Vaccinations</h2>
+                <p id="totalVaccinations">Loading...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 COVID-19 Information Website</p>
+    </footer>
+
+    <script>
+        fetch('php/stats.php')
+            .then(response => response.json())
+            .then(data => {
+                if(data.error) {
+                    console.error(data.error);
+                } else {
+                    document.getElementById('totalCases').textContent = data.total_cases.toLocaleString();
+                    document.getElementById('totalDeaths').textContent = data.total_deaths.toLocaleString();
+                    document.getElementById('totalVaccinations').textContent = data.vaccinations.toLocaleString();
+                }
+            });
+    </script>
+</body>
+</html>
