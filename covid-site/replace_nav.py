@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+import os
+import re
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About COVID-19 | COVID-19 Insight Portal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-    <a class="skip-link" href="#main">Skip to content</a>
+nav_html = """
     <nav class="pill-nav">
         <div class="pill-nav-inner">
             <a href="index.html" class="pill-logo" aria-label="Home">
@@ -94,72 +81,19 @@
             if(activeLink) activeLink.style.color = 'var(--teal-deep)';
         });
     </script>
-    <main id="main">
-        <div class="page-head">
-            <div class="wrap">
-                <h1>About COVID-19</h1>
-                <p>What to look out for, how to reduce your risk, and who to call.</p>
-            </div>
-        </div>
-        <div class="content">
-            <div class="info-grid">
-                <section class="panel">
-                    <h2>Symptoms</h2>
-                    <ul class="check-list warn">
-                        <li>Fever or chills</li>
-                        <li>Cough</li>
-                        <li>Shortness of breath or difficulty breathing</li>
-                        <li>Fatigue</li>
-                        <li>Muscle or body aches</li>
-                    </ul>
-                </section>
-                <section class="panel">
-                    <h2>Prevention</h2>
-                    <ul class="check-list">
-                        <li>Wear a mask in crowded spaces.</li>
-                        <li>Maintain social distancing.</li>
-                        <li>Wash hands frequently with soap and water.</li>
-                        <li>Get vaccinated when eligible.</li>
-                    </ul>
-                </section>
-            </div>
-            <section class="helpline">
-                <p><strong>Helplines</strong><br>If you have severe symptoms such as difficulty breathing, call for
-                    emergency help immediately.</p>
-                <div class="num"><small>National helpline</small>1075</div>
-                <div class="num"><small>Emergency</small>112</div>
-            </section>
-            <p style="margin-top:1.5rem"><a class="btn" href="register.php">Register for vaccination</a></p>
-        </div>
-    </main>
-    <footer>
-        <div class="wrap">
-            <div>
-                <h3>COVID-19 Insight Portal</h3>
-                <p>Figures, prevention guidance and vaccination registration in one place. Figures come from the portal
-                    database and are not a substitute for medical advice.</p>
-            </div>
-            <div>
-                <h3>Pages</h3>
-                <ul>
-                    <li><a href="data.php">Statistics</a></li>
-                    <li><a href="about.html">Symptoms and prevention</a></li>
-                    <li><a href="comments.php">Discussion</a></li>
-                    <li><a href="register.php">Vaccination registration</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>Get help</h3>
-                <ul>
-                    <li>National helpline: <strong>1075</strong></li>
-                    <li>Emergency: <strong>112</strong></li>
-                </ul>
-            </div>
-        </div>
-        <div class="wrap legal">&copy; 2026 COVID-19 Insight Portal</div>
-    </footer>
+"""
 
-    <script src="js/main.js"></script>
-</body>
+pattern = re.compile(r'<nav class="pill-nav">.*?</nav>', re.DOTALL)
 
-</html>
+for root, dirs, files in os.walk('.'):
+    for f in files:
+        if f.endswith('.html') or f.endswith('.php'):
+            path = os.path.join(root, f)
+            with open(path, 'r', encoding='utf-8') as file:
+                content = file.read()
+
+            if '<nav class="pill-nav">' in content:
+                new_content = pattern.sub(nav_html.strip(), content)
+                with open(path, 'w', encoding='utf-8') as file:
+                    file.write(new_content)
+                print(f"Updated {path}")
