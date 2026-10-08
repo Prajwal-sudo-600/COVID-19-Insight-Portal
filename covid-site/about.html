@@ -3,50 +3,116 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>About COVID-19</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About COVID-19 | COVID-19 Insight Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="data.php">Data</a>
-            <a href="about.html">About</a>
-            <a href="comments.php">Comments</a>
-            <a href="register.php">Register</a>
-            <a href="login.php">Login</a>
-        </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="utility">
+        <div class="wrap">
+            <span>National helpline <strong>1075</strong> &nbsp;|&nbsp; Emergency <strong>112</strong></span>
+            <span>Public health information and vaccination registration</span>
+        </div>
+    </div>
+    <header class="masthead">
+        <div class="wrap">
+            <a class="brand" href="index.html">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                    <rect width="48" height="48" rx="6" fill="#0d5c6e" />
+                    <circle cx="24" cy="24" r="9" fill="none" stroke="#fff" stroke-width="3" />
+                    <path d="M24 7v8M24 33v8M7 24h8M33 24h8" stroke="#e9a82f" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                <span><span class="brand-name">COVID-19 Insight Portal</span><span class="brand-tag">Statistics,
+                        guidance and vaccination registration</span></span>
+            </a>
+            <div class="account">
+                <a class="btn ghost small" href="login.php">Log in</a>
+                <a class="btn small" href="signup.php">Create account</a>
+            </div>
+        </div>
     </header>
-
-    <main>
-        <h1>About COVID-19</h1>
-
-        <h2>Symptoms</h2>
-        <ul>
-            <li>Fever or chills</li>
-            <li>Cough</li>
-            <li>Shortness of breath or difficulty breathing</li>
-            <li>Fatigue</li>
-            <li>Muscle or body aches</li>
-        </ul>
-
-        <h2>Prevention</h2>
-        <ul>
-            <li>Wear a mask in crowded spaces.</li>
-            <li>Maintain social distancing.</li>
-            <li>Wash hands frequently with soap and water.</li>
-            <li>Get vaccinated when eligible.</li>
-        </ul>
-
-        <h2>Helplines</h2>
-        <p>National Helpline Number: 1075</p>
-        <p>Emergency Number: 112</p>
+    <nav class="mainnav" aria-label="Main">
+        <div class="wrap">
+            <a href="index.html">Home</a>
+            <a href="data.php">Statistics</a>
+            <a href="about.html" aria-current="page">About COVID-19</a>
+            <a href="comments.php">Discussion</a>
+            <a href="register.php">Vaccination</a>
+        </div>
+    </nav>
+    <main id="main">
+        <div class="page-head">
+            <div class="wrap">
+                <h1>About COVID-19</h1>
+                <p>What to look out for, how to reduce your risk, and who to call.</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="info-grid">
+                <section class="panel">
+                    <h2>Symptoms</h2>
+                    <ul class="check-list warn">
+                        <li>Fever or chills</li>
+                        <li>Cough</li>
+                        <li>Shortness of breath or difficulty breathing</li>
+                        <li>Fatigue</li>
+                        <li>Muscle or body aches</li>
+                    </ul>
+                </section>
+                <section class="panel">
+                    <h2>Prevention</h2>
+                    <ul class="check-list">
+                        <li>Wear a mask in crowded spaces.</li>
+                        <li>Maintain social distancing.</li>
+                        <li>Wash hands frequently with soap and water.</li>
+                        <li>Get vaccinated when eligible.</li>
+                    </ul>
+                </section>
+            </div>
+            <section class="helpline">
+                <p><strong>Helplines</strong><br>If you have severe symptoms such as difficulty breathing, call for
+                    emergency help immediately.</p>
+                <div class="num"><small>National helpline</small>1075</div>
+                <div class="num"><small>Emergency</small>112</div>
+            </section>
+            <p style="margin-top:1.5rem"><a class="btn" href="register.php">Register for vaccination</a></p>
+        </div>
     </main>
-
     <footer>
-        <p>&copy; 2026 COVID-19 Information Website</p>
+        <div class="wrap">
+            <div>
+                <h3>COVID-19 Insight Portal</h3>
+                <p>Figures, prevention guidance and vaccination registration in one place. Figures come from the portal
+                    database and are not a substitute for medical advice.</p>
+            </div>
+            <div>
+                <h3>Pages</h3>
+                <ul>
+                    <li><a href="data.php">Statistics</a></li>
+                    <li><a href="about.html">Symptoms and prevention</a></li>
+                    <li><a href="comments.php">Discussion</a></li>
+                    <li><a href="register.php">Vaccination registration</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Get help</h3>
+                <ul>
+                    <li>National helpline: <strong>1075</strong></li>
+                    <li>Emergency: <strong>112</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap legal">&copy; 2026 COVID-19 Insight Portal</div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>

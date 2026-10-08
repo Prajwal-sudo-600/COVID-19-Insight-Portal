@@ -4,59 +4,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COVID-19 Information Website</title>
+    <title>Home | COVID-19 Insight Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="data.php">Data</a>
-            <a href="about.html">About</a>
-            <a href="comments.php">Comments</a>
-            <a href="register.php">Register</a>
-            <a href="login.php">Login</a>
-        </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="utility">
+        <div class="wrap">
+            <span>National helpline <strong>1075</strong> &nbsp;|&nbsp; Emergency <strong>112</strong></span>
+            <span>Public health information and vaccination registration</span>
+        </div>
+    </div>
+    <header class="masthead">
+        <div class="wrap">
+            <a class="brand" href="index.html">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                    <rect width="48" height="48" rx="6" fill="#0d5c6e" />
+                    <circle cx="24" cy="24" r="9" fill="none" stroke="#fff" stroke-width="3" />
+                    <path d="M24 7v8M24 33v8M7 24h8M33 24h8" stroke="#e9a82f" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                <span><span class="brand-name">COVID-19 Insight Portal</span><span class="brand-tag">Statistics,
+                        guidance and vaccination registration</span></span>
+            </a>
+            <div class="account">
+                <a class="btn ghost small" href="login.php">Log in</a>
+                <a class="btn small" href="signup.php">Create account</a>
+            </div>
+        </div>
     </header>
+    <nav class="mainnav" aria-label="Main">
+        <div class="wrap">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="data.php">Statistics</a>
+            <a href="about.html">About COVID-19</a>
+            <a href="comments.php">Discussion</a>
+            <a href="register.php">Vaccination</a>
+        </div>
+    </nav>
+    <main id="main">
+        <section class="hero">
+            <div class="wrap">
+                <div>
+                    <h1>COVID-19 figures, guidance and vaccination in one place</h1>
+                    <p class="lead">Check the latest recorded totals, read how to protect yourself and your family, and
+                        register for vaccination.</p>
+                    <div class="actions">
+                        <a class="btn" href="register.php">Register for vaccination</a>
+                        <a class="btn ghost" href="data.php">View statistics</a>
+                    </div>
+                </div>
+                <div class="snapshot" aria-live="polite">
+                    <h2>Latest recorded totals</h2>
+                    <dl style="margin:0">
+                        <div class="stat">
+                            <dt>Total cases</dt>
+                            <dd id="totalCases" class="loading">&hellip;</dd>
+                        </div>
+                        <div class="stat">
+                            <dt>Total deaths</dt>
+                            <dd id="totalDeaths" class="loading">&hellip;</dd>
+                        </div>
+                        <div class="stat">
+                            <dt>Vaccinations given</dt>
+                            <dd id="totalVaccinations" class="loading">&hellip;</dd>
+                        </div>
+                    </dl>
+                    <p class="note" id="statsNote">Loading figures</p>
+                </div>
+            </div>
+        </section>
 
-    <main>
-        <h1>Welcome to COVID-19 Information Portal</h1>
-        <p>Get the latest updates, register for vaccination, and read about prevention.</p>
+        <div class="content">
+            <section class="services" aria-label="Services">
+                <div class="service-primary">
+                    <div>
+                        <h2>Register for vaccination</h2>
+                        <p>Enter your details once and record your current vaccination status. It takes about two
+                            minutes.</p>
+                    </div>
+                    <div><a class="btn light" href="register.php">Start registration</a></div>
+                </div>
+                <ul class="service-list">
+                    <li><a href="data.php"><strong>Explore the statistics</strong><span>Search, sort and compare cases,
+                                deaths and vaccinations by country.</span></a></li>
+                    <li><a href="about.html"><strong>Symptoms and prevention</strong><span>Know the warning signs and
+                                the steps that reduce risk.</span></a></li>
+                    <li><a href="comments.php"><strong>Join the discussion</strong><span>Read what others are asking and
+                                share your own questions.</span></a></li>
+                </ul>
+            </section>
 
-        <div class="stats">
-            <div class="stat-box">
-                <h2>Total Cases</h2>
-                <p id="totalCases">Loading...</p>
-            </div>
-            <div class="stat-box">
-                <h2>Total Deaths</h2>
-                <p id="totalDeaths">Loading...</p>
-            </div>
-            <div class="stat-box">
-                <h2>Vaccinations</h2>
-                <p id="totalVaccinations">Loading...</p>
-            </div>
+            <section class="helpline" aria-label="Helplines">
+                <p><strong>Feeling unwell or need advice?</strong><br>Call the national helpline. In an emergency, call
+                    112 straight away.</p>
+                <div class="num"><small>National helpline</small>1075</div>
+                <div class="num"><small>Emergency</small>112</div>
+            </section>
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 COVID-19 Information Website</p>
-    </footer>
-
     <script>
         fetch('php/stats.php')
-            .then(response => response.json())
+            .then(r => r.json())
             .then(data => {
-                if (data.error) {
-                    console.error(data.error);
-                } else {
-                    document.getElementById('totalCases').textContent = data.total_cases.toLocaleString();
-                    document.getElementById('totalDeaths').textContent = data.total_deaths.toLocaleString();
-                    document.getElementById('totalVaccinations').textContent = data.vaccinations.toLocaleString();
-                }
+                if (data.error) throw new Error(data.error);
+                const set = (id, v) => { const el = document.getElementById(id); el.textContent = v.toLocaleString('en-IN'); el.classList.remove('loading'); };
+                set('totalCases', data.total_cases);
+                set('totalDeaths', data.total_deaths);
+                set('totalVaccinations', data.vaccinations);
+                document.getElementById('statsNote').textContent = 'Totals across all countries in the portal database.';
+            })
+            .catch(() => {
+                document.querySelectorAll('.stat dd').forEach(el => { el.textContent = '\u2014'; el.classList.remove('loading'); });
+                document.getElementById('statsNote').textContent = 'Figures could not be loaded. Check that Apache and MySQL are running, then refresh.';
             });
     </script>
+    <footer>
+        <div class="wrap">
+            <div>
+                <h3>COVID-19 Insight Portal</h3>
+                <p>Figures, prevention guidance and vaccination registration in one place. Figures come from the portal
+                    database and are not a substitute for medical advice.</p>
+            </div>
+            <div>
+                <h3>Pages</h3>
+                <ul>
+                    <li><a href="data.php">Statistics</a></li>
+                    <li><a href="about.html">Symptoms and prevention</a></li>
+                    <li><a href="comments.php">Discussion</a></li>
+                    <li><a href="register.php">Vaccination registration</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Get help</h3>
+                <ul>
+                    <li>National helpline: <strong>1075</strong></li>
+                    <li>Emergency: <strong>112</strong></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrap legal">&copy; 2026 COVID-19 Insight Portal</div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 
 </html>
