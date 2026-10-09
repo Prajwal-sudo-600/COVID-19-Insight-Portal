@@ -69,7 +69,7 @@ $testData = [
         ['input' => 'City123', 'expected' => false],
         ['input' => 'This city name is definitely way too long for the field', 'expected' => false],
         ['input' => '', 'expected' => false],
-        ['input' => '   ', 'expected' => true],
+        ['input' => '   ', 'expected' => false],
         ['input' => 'Paris-Ville', 'expected' => false]
     ],
     'comment' => [
